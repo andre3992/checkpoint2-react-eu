@@ -4,11 +4,21 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import Screenshot from "./components/Screenshots"
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+   <Router>
+      <Switch>
+        <Route exact path="/" component={App} />
+        <Route path="/screenshots" component={Screenshot} />
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

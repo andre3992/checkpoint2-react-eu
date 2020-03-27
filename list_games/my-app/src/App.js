@@ -3,7 +3,6 @@ import "./App.css";
 import GameList from "./components/GameList";
 import Game from "./components/Game";
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -19,13 +18,17 @@ class App extends React.Component {
     });
   };
 
+  removeGame = () => {
+    this.setState({ gameClicked: [] });
+};
   render() {
     return (
       <div className="App">
         <GameList items={this.state.items}
           getGameClick={this.getGameClick}
         />
-        <Game gameClicked={this.state.gameClicked} />
+        <Game gameClicked={this.state.gameClicked}
+        removeGame={this.removeGame} />
       </div>
     );
   }

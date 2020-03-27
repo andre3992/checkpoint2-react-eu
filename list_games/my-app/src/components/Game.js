@@ -1,13 +1,8 @@
 import React from "react";
-import Screenshots from "./Screenshots"
 import { Container, Row, Col } from "react-bootstrap";
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
-
+  Link
+} from "react-router-dom";
 class Game extends React.Component {
   constructor() {
     super();
@@ -15,27 +10,26 @@ class Game extends React.Component {
       gameClicked: [],
     };
   }
-  
-  
-  removeGame = () => {
-    this.setState({ gameClicked: [] });
-  };
-
   render() {
     return (
-        <Router>
-
+<div>
       <Container fluid>
         <Row className="information">
           <Col>Name:{this.props.gameClicked.name}</Col>
           <Col>Rating:{this.props.gameClicked.rating}</Col>
           <Col>
-            <button className="buttons" onClick={this.removeGame}>Remove Game</button>
+            <button className="buttons" onClick={this.props.removeGame}>Remove Game</button>
+            <button className= "screenshoots">
+          <Link
+            to={{
+              pathname: `/screenshots/${this.props.gameClicked.id}`,
+              state: {gameClicked:this.props.gameClicked}
+            }}
+          >
+            ScreenShots
+          </Link>
+        </button>
           </Col>
-          
-
-          <Col><Link to={`/jeu/screenshots/${this.props.gameClicked.id}`}>More Images</Link>
-</Col>
         </Row>
         <Row className="image">
           <Col>
@@ -43,14 +37,7 @@ class Game extends React.Component {
           </Col>
         </Row>
       </Container>
-      <Switch>
-      <Route path={`/jeu/screenshots/${this.props.gameClicked.id}`}>
-      <Screenshots gameClicked={this.props.gameClicked}
-/>
-          </Route>
-        </Switch>
-      </Router>
-      
+      </div>
     );
   }
   

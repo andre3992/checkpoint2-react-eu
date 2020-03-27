@@ -12,6 +12,10 @@ class GameList extends React.Component {
       biggerRating: false
     };
   }
+  
+  removeGame = () => {
+    this.setState({ game: [] });
+  };
 
   getGames = () => {
     return fetch("https://wild-games.herokuapp.com/api/v1")
@@ -55,8 +59,7 @@ class GameList extends React.Component {
   })
 
   }
- 
-
+  
   render() {
     const { error, isLoaded, items } = this.state;
     if (error) {

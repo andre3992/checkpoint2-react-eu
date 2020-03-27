@@ -6,6 +6,10 @@
     font-size: 30px;
 }
 
+.carousel {
+    width: 700px;
+}
+
 .buttons {
     border-radius: 10px;
     width: 150px;
