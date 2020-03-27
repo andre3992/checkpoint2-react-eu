@@ -16,6 +16,7 @@ class Game extends React.Component {
     };
   }
   
+  
   removeGame = () => {
     this.setState({ gameClicked: [] });
   };
